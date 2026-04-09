@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollment – University Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="/" class="navbar-brand">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">University Portal</span>
+    </a>
+    <div class="navbar-links">
+        <a href="/courses">Courses</a>
+        <a href="/enrollments">Enrollments</a>
+        {% if session.get('student_name') %}
+            <div class="user-pill">
+                <div class="user-avatar">{{ session['student_name'][0].upper() }}</div>
+                {{ session['student_name'] }}
+            </div>
+            <a href="/logout" class="btn-nav">Logout</a>
+        {% endif %}
+    </div>
+</nav>
+
+<div class="success-page">
+
+    {% if status == 'success' %}
+    <div class="success-banner">
+        <div class="check-icon">✓</div>
+        <h2>Enrollment Confirmed!</h2>
+        <p>You've successfully enrolled in <strong>{{ course[1] }}</strong> with {{ course[2] }}</p>
+    </div>
+    {% else %}
+    <div class="success-banner" style="background: linear-gradient(135deg,#fffbeb,#fef3c7); border-color:#fcd34d;">
+        <div class="check-icon" style="background:#d97706;">ℹ</div>
+        <h2 style="color:#92400e;">Already Enrolled</h2>
+        <p style="color:#78350f;">You're already enrolled in <strong>{{ course[1] }}</strong>.</p>
+    </div>
+    {% endif %}
+
+    <div class="enrolled-section">
+        <h3>📚 Your Enrolled Courses
+            <span style="font-size:14px; font-weight:500; color:var(--gray-500); font-family:'DM Sans',sans-serif;">
+                ({{ enrolled|length }} course{{ 's' if enrolled|length != 1 else '' }})
+            </span>
+        </h3>
+
+        {% if enrolled %}
+        <div class="enrolled-list">
+            {% for row in enrolled %}
+            <div class="enrolled-item">
+                <div class="item-icon">📖</div>
+                <div>
+                    <div class="item-name">{{ row[0] }}</div>
+                    <div class="item-meta">{{ row[1] }} · {{ row[2] }} credits</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p style="color:var(--gray-500); margin-bottom:24px;">No courses enrolled yet.</p>
+        {% endif %}
+
+        <div class="success-actions">
+            <a href="/courses" class="btn btn-primary">← Browse More Courses</a>
+            <a href="/enrollments" class="btn" style="background:var(--white); color:var(--navy); border:1.5px solid var(--gray-200);">View All Enrollments</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

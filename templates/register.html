@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register – University Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="/" class="navbar-brand">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">University Portal</span>
+    </a>
+    <div class="navbar-links">
+        <a href="/courses">Courses</a>
+        <a href="/enrollments">Enrollments</a>
+        <a href="/register" class="active">Register</a>
+        <a href="/login" class="btn-nav">Login</a>
+    </div>
+</nav>
+
+<div class="form-page">
+    <div class="form-card">
+        <div class="form-card-header">
+            <div class="form-icon">📝</div>
+            <h2>Create Account</h2>
+            <p>Join the university portal to start enrolling in courses</p>
+        </div>
+
+        {% if error %}
+        <div class="alert alert-error">⚠ {{ error }}</div>
+        {% endif %}
+
+        {% if success %}
+        <div class="alert alert-success">✓ {{ success }}</div>
+        {% endif %}
+
+        <form method="POST">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="name" placeholder="e.g. Name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="yourname@university.edu" required>
+            </div>
+
+            <div class="form-group">
+                <label>Department</label>
+                <input type="text" name="dept" placeholder="e.g. Computer Science" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Create a strong password" required>
+            </div>
+
+            <button type="submit" class="btn btn-submit">Create Account →</button>
+        </form>
+
+        <div class="form-footer">
+            Already have an account? <a href="/login">Sign in here</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

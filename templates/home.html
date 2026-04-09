@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Course Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="/" class="navbar-brand">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">University Portal</span>
+    </a>
+    <div class="navbar-links">
+        <a href="/courses">Courses</a>
+        <a href="/enrollments">Enrollments</a>
+        <a href="/register">Register</a>
+        <a href="/login" class="btn-nav">Login</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-badge">✦ Academic Year 2024–25</div>
+    <h1>Build Your<br><span>Academic Journey</span></h1>
+    <p>Explore a wide range of courses taught by expert faculty. Register, enroll, and shape your future.</p>
+    <div class="hero-cta">
+        <a href="/courses" class="btn btn-primary">Browse Courses →</a>
+        <a href="/register" class="btn btn-secondary">Get Started</a>
+    </div>
+</section>
+
+<div class="stats-strip">
+    <div class="stat">
+        <span class="stat-num">12+</span>
+        <span class="stat-label">Courses Available</span>
+    </div>
+    <div class="stat">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Expert Faculty</span>
+    </div>
+    <div class="stat">
+        <span class="stat-num">3–4</span>
+        <span class="stat-label">Credits Per Course</span>
+    </div>
+    <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Online Enrollment</span>
+    </div>
+</div>
+
+</body>
+</html>

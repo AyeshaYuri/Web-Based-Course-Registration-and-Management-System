@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses – University Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="/" class="navbar-brand">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">University Portal</span>
+    </a>
+    <div class="navbar-links">
+        <a href="/courses" class="active">Courses</a>
+        <a href="/enrollments">Enrollments</a>
+        {% if session.get('student_name') %}
+            <div class="user-pill">
+                <div class="user-avatar">{{ session['student_name'][0].upper() }}</div>
+                {{ session['student_name'] }}
+            </div>
+            <a href="/logout" class="btn-nav">Logout</a>
+        {% else %}
+            <a href="/register">Register</a>
+            <a href="/login" class="btn-nav">Login</a>
+        {% endif %}
+    </div>
+</nav>
+
+<div class="page-header">
+    <h1>Available Courses</h1>
+    <p>Browse and enroll in courses for this semester</p>
+</div>
+
+<div class="search-wrapper">
+    <input type="text" id="search" placeholder="Search courses by name..." onkeyup="searchCourses()">
+</div>
+
+<div class="course-container">
+    {% set icons = ['💻','🧮','🤖','📊','🧠','🔒','☁️','🌐','⚙️','🛠️','📈','⛓️'] %}
+    {% for c in courses %}
+    <div class="course-card">
+        <div class="course-card-header">
+            <div class="course-icon">{{ icons[loop.index0 % icons|length] }}</div>
+            <span class="credit-badge">{{ c[3] }} Credits</span>
+        </div>
+        <h2>{{ c[1] }}</h2>
+        <p class="instructor">{{ c[2] }}</p>
+
+        <div class="course-form">
+            {% if session.get('student_id') %}
+            <form method="POST" action="/enroll">
+                <input type="hidden" name="course_id" value="{{ c[0] }}">
+                <button type="submit" class="btn btn-enroll">Enroll Now</button>
+            </form>
+            {% else %}
+            <a href="/login" class="btn btn-enroll" style="text-align:center; display:block; text-decoration:none;">Login to Enroll</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

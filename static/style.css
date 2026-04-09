@@ -1,0 +1,734 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+    --navy: #1a2744;
+    --navy-light: #243560;
+    --gold: #d4962a;
+    --gold-light: #f0b429;
+    --cream: #fdf8f0;
+    --white: #ffffff;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-500: #64748b;
+    --gray-700: #334155;
+    --success: #16a34a;
+    --error: #dc2626;
+    --shadow-sm: 0 1px 3px rgba(26,39,68,0.08);
+    --shadow-md: 0 4px 16px rgba(26,39,68,0.12);
+    --shadow-lg: 0 12px 40px rgba(26,39,68,0.16);
+    --radius: 12px;
+    --radius-lg: 20px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-700);
+    min-height: 100vh;
+}
+
+/* ── NAVBAR ── */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 68px;
+    background: var(--navy);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.navbar-brand span.logo-icon {
+    font-size: 24px;
+}
+
+.navbar-brand span.logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.3px;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.navbar-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    letter-spacing: 0.2px;
+}
+
+.navbar-links a:hover {
+    color: var(--white);
+    background: rgba(255,255,255,0.1);
+}
+
+.navbar-links a.active,
+.navbar-links a.btn-outline {
+    color: var(--gold-light);
+    border: 1px solid rgba(240,180,41,0.4);
+}
+
+.navbar-links a.btn-nav {
+    background: var(--gold);
+    color: var(--white);
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.navbar-links a.btn-nav:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+}
+
+/* ── HERO ── */
+.hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #2d4a9e 100%);
+    padding: 100px 40px 90px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(212,150,42,0.2);
+    border: 1px solid rgba(212,150,42,0.4);
+    color: var(--gold-light);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.hero h1 span { color: var(--gold-light); }
+
+.hero p {
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    max-width: 520px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+    position: relative;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    position: relative;
+}
+
+/* ── BUTTONS ── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.22s;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.2px;
+}
+
+.btn-primary {
+    background: var(--gold);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(212,150,42,0.35);
+}
+
+.btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212,150,42,0.45);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.12);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(4px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+.btn-enroll {
+    width: 100%;
+    background: var(--navy);
+    color: var(--white);
+    padding: 11px;
+    font-size: 14px;
+    border-radius: 8px;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.btn-enroll:hover {
+    background: var(--navy-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-submit {
+    width: 100%;
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    color: var(--white);
+    padding: 14px;
+    font-size: 15px;
+    border-radius: 10px;
+    justify-content: center;
+    margin-top: 8px;
+    box-shadow: 0 4px 14px rgba(26,39,68,0.3);
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26,39,68,0.4);
+}
+
+/* ── STATS STRIP ── */
+.stats-strip {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 32px 40px;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.stat { text-align: center; }
+.stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--navy);
+    display: block;
+}
+.stat-label {
+    font-size: 13px;
+    color: var(--gray-500);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 40px;
+}
+
+.page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+}
+
+.page-header p { color: var(--gray-500); font-size: 15px; }
+
+/* ── SEARCH BAR ── */
+.search-wrapper {
+    padding: 24px 40px 0;
+    max-width: 500px;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 12px 18px 12px 44px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") 14px center no-repeat;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color: var(--gray-700);
+}
+
+.search-wrapper input:focus {
+    outline: none;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(26,39,68,0.08);
+}
+
+/* ── COURSE GRID ── */
+.course-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+    padding: 28px 40px 60px;
+}
+
+.course-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.25s;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(26,39,68,0.15);
+}
+
+.course-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.course-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.credit-badge {
+    background: rgba(212,150,42,0.12);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 100px;
+    border: 1px solid rgba(212,150,42,0.25);
+}
+
+.course-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.course-card .instructor {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--gray-500);
+    font-size: 13.5px;
+    margin-bottom: 16px;
+}
+
+.course-card .instructor::before {
+    content: '👤';
+    font-size: 12px;
+}
+
+.course-form { margin-top: auto; }
+
+.course-form label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+/* ── FORMS ── */
+.form-page {
+    min-height: calc(100vh - 68px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: linear-gradient(160deg, var(--gray-50) 0%, #e8edf7 100%);
+}
+
+.form-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 44px 48px;
+    width: 100%;
+    max-width: 460px;
+    border: 1px solid var(--gray-200);
+}
+
+.form-card-header { margin-bottom: 32px; text-align: center; }
+
+.form-card-header .form-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin: 0 auto 16px;
+}
+
+.form-card-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+}
+
+.form-card-header p { color: var(--gray-500); font-size: 14px; }
+
+.form-group { margin-bottom: 20px; }
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: 7px;
+    letter-spacing: 0.2px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 9px;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--gray-700);
+    background: var(--white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(26,39,68,0.08);
+}
+
+.form-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--gray-500);
+}
+
+.form-footer a {
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.form-footer a:hover { text-decoration: underline; }
+
+/* ── ALERTS ── */
+.alert {
+    padding: 12px 16px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alert-error {
+    background: #fef2f2;
+    color: var(--error);
+    border: 1px solid #fecaca;
+}
+
+.alert-success {
+    background: #f0fdf4;
+    color: var(--success);
+    border: 1px solid #bbf7d0;
+}
+
+/* ── ENROLLMENT SUCCESS ── */
+.success-page {
+    min-height: calc(100vh - 68px);
+    padding: 60px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.success-banner {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 1px solid #bbf7d0;
+    border-radius: var(--radius-lg);
+    padding: 36px 40px;
+    text-align: center;
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+}
+
+.success-banner::before {
+    content: '✓';
+    position: absolute;
+    font-size: 140px;
+    color: rgba(22,163,74,0.05);
+    top: -20px;
+    right: 20px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.success-banner .check-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--success);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 28px;
+    color: white;
+    box-shadow: 0 6px 20px rgba(22,163,74,0.3);
+}
+
+.success-banner h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #15803d;
+    margin-bottom: 8px;
+}
+
+.success-banner p { color: #166534; font-size: 15px; }
+
+.enrolled-section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.enrolled-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 14px;
+    margin-bottom: 32px;
+}
+
+.enrolled-item {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.2s;
+}
+
+.enrolled-item:hover {
+    border-color: var(--navy);
+    box-shadow: var(--shadow-md);
+}
+
+.enrolled-item .item-icon {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+}
+
+.enrolled-item .item-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 2px;
+}
+
+.enrolled-item .item-meta {
+    font-size: 12.5px;
+    color: var(--gray-500);
+}
+
+.success-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* ── ENROLLMENTS TABLE ── */
+.table-page {
+    padding: 40px;
+}
+
+.table-wrapper {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.enrollments-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.enrollments-table thead {
+    background: var(--navy);
+    color: var(--white);
+}
+
+.enrollments-table thead th {
+    padding: 15px 24px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.enrollments-table tbody tr {
+    border-bottom: 1px solid var(--gray-100);
+    transition: background 0.15s;
+}
+
+.enrollments-table tbody tr:last-child { border-bottom: none; }
+.enrollments-table tbody tr:hover { background: var(--gray-50); }
+
+.enrollments-table tbody td {
+    padding: 14px 24px;
+    font-size: 14.5px;
+    color: var(--gray-700);
+}
+
+.enrollments-table tbody td:first-child { font-weight: 600; color: var(--navy); }
+
+/* ── ENROLL INPUT ── */
+.enroll-input {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 7px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.2s;
+    margin-bottom: 0;
+}
+
+.enroll-input:focus {
+    outline: none;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(26,39,68,0.08);
+}
+
+/* ── LOGGED IN PILL ── */
+.user-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 6px 14px 6px 8px;
+    color: rgba(255,255,255,0.9);
+    font-size: 13.5px;
+    font-weight: 500;
+}
+
+.user-avatar {
+    width: 26px;
+    height: 26px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: white;
+    font-weight: 700;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .navbar { padding: 0 20px; }
+    .hero { padding: 70px 24px 60px; }
+    .stats-strip { gap: 30px; flex-wrap: wrap; padding: 24px 20px; }
+    .course-container { padding: 20px; gap: 16px; }
+    .form-card { padding: 32px 24px; }
+    .table-page { padding: 20px; }
+    .success-page { padding: 30px 20px; }
+    .search-wrapper { padding: 20px 20px 0; max-width: 100%; }
+}
